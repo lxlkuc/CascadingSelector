@@ -129,6 +129,7 @@
                     });
                     $selector.find('.cs-body a').click(function(event) {
                         event.preventDefault();
+                        $selector.find('.cs-body a').removeClass('btn-primary').addClass('btn-default');
                         if ($(this).attr('data-children') == 'true') {
                             selectOne($(this).attr('data-id'));
                         } else {
