@@ -66,7 +66,7 @@
 
                 $trigger = $element.find('#'+options.id+'_trigger');
                 $selector = $element.find('#'+options.id);
-                $selector.css('position', 'absolute').css('box-shadow', '0 0 20px #666').css('width', cs_width).css('height', cs_height).hide();
+                $selector.css('position', 'absolute').css('z-index', '100').css('box-shadow', '0 0 20px #666').css('width', cs_width)/* .css('height', cs_height) */.hide();
 
                 $trigger.click(function(event) {
                     event.preventDefault();
@@ -122,7 +122,8 @@
                 };
 
                 var setLinkAction = function() {
-                    $selector.find('.cs-header .breadcrumb a:last').click(function(event) {
+                    $selector.find('.cs-header .breadcrumb a:last').unbind('click')
+                    .click(function(event) {
                         event.preventDefault();
                         $selector.find('.cs-header .breadcrumb li:gt('+($(this).attr('data-index'))+')').remove();
                         selectOne($(this).attr('data-id'));
