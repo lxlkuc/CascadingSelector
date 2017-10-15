@@ -41,7 +41,7 @@
                 
                 switch (options.theme) {
                     case 'adminlte':
-                        selectorHTML = '<div id="'+options.id+'" class="box '+options.wrapperClass+'"><div class="cs-header box-header"><div class="box-tools pull-right"><button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times" style="padding: .9em .5em;"></i></button></div><ol class="breadcrumb" style="margin:0;"></ol></div><div class="cs-body box-body" style="width:100%;height:'+(cs_height-80)+'px;overflow:auto;"></div>'+(options.submit == true ? '<div class="box-footer"><button type="button" class="btn btn-primary cs-submit pull-right">选择</button></div>' : '')+'</div>';
+                        selectorHTML = '<div id="'+options.id+'" class="box '+options.wrapperClass+'"><div class="cs-header box-header"><div class="box-tools pull-right"><button type="button" class="btn btn-box-tool" data-widget="close"><i class="fa fa-times" style="padding: .9em .5em;"></i></button></div><ol class="breadcrumb" style="margin:0;"></ol></div><div class="cs-body box-body" style="width:100%;height:'+(cs_height-80)+'px;overflow:auto;"></div>'+(options.submit == true ? '<div class="box-footer"><button type="button" class="btn btn-primary cs-submit pull-right">选择</button></div>' : '')+'</div>';
                         break;
                     case 'bootstrap':
                         selectorHTML = '<div id="'+options.id+'" class="panel panel-default'+options.wrapperClass+'"><div class="panel-heading"><ul>省市</ul></div><div class="panel-body">2</div></div>';
@@ -150,6 +150,10 @@
                         $element.find('span.target_text').text(current.text());
                         $selector.hide();
                     }
+                });
+
+                $selector.find('button[data-widget=close]').unbind('click').click(function() {
+                    $selector.hide();
                 });
             });
         }
